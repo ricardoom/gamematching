@@ -1,5 +1,60 @@
-body {
-  background: green;
+/* No sass */
+:root {
+  --backgroundColor: #cefdc2;
+  --borderColor: #333;
+  --cardBg: #ce98fa;
+  --card-height: 10em;
+  --card-width: var(--card-height);
+  --fontFamily: sans-serif;
+  --fontSize: 1rem;
+  --spacers: 0.5em;
+  --size: 16px;
 }
 
-/*# sourceMappingURL=base.css.map */
+html {
+  font-size: var(--size);
+}
+
+body {
+  background: var(--backgroundColor);
+  font-family: var(--fontFamily);
+  font-size: var(--fontSize);
+}
+
+main {
+  border: 1px solid var(--borderColor);
+  display: grid;
+  gap: var(--spacers);
+}
+
+.board {
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
+  grid-template-rows: repeat(8, var(--card-height));
+}
+
+.card {
+  align-self: center;
+  /* background-color: var(--cardBg); */
+  border-radius: var(--spacers);
+  height: var(--card-height);
+  /* padding: calc(var(--spacers) * 1.5); */
+  width: var(--card-width);
+  position: relative;
+}
+
+.card.face-down {
+  background-color: azure;
+  position: absolute;
+  top: 0;
+}
+
+.card.face-up {
+  background-color: bisque;
+  position: absolute;
+  top: 0;
+}
+
+#backOfCard,
+#frontOfCards {
+  display: none;
+}

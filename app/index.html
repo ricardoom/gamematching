@@ -11,7 +11,33 @@
 
 <body>
   <h1>matching game</h1>
+  <main class="board">
+    <div class="card">
+      <div class="card face-up">
+        <svg>
+          <use xlink:href="#frontOfCard" />
+        </svg>
+      </div>
+      <div class="card face-down">
+        <svg>
+          <use xlink:href="#backOfCard" />
+        </svg>
+      </div>
+    </div>
+  </main>
 </body>
+<svg>
+  <defs>
+    <symbol id="backOfCard" viewBox="0 0 100 100">
+      <circle cx="0" cy="50" r="50" />
+    </symbol>
+    <symbol id="frontOfCards" viewBox="0 0 100 100">
+      <circle cx="0" cy="0" r="95" />
+    </symbol>
+  </defs>
+
+</svg>
+
 <script src="index.js"></script>
 
 </html>

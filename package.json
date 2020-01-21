@@ -1,0 +1,20 @@
+{
+  "name": "gamematching",
+  "version": "0.0.1",
+  "description": "a basic pair matching / memory game. Built with vanilla JS, HTL, and CSS as learning project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "npm run start & sass --watch app/scss/base.scss app/css/base.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ricardoom/gamematching.git"
+  },
+  "author": "Ricardo E. Galvez",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7"
+  }
+}

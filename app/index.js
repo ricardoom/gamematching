@@ -11,23 +11,47 @@
 //
 // Draw the cards
 //
-const icons = {
-  iconName: [],
-  iconURL: [],
-};
+
+const cardContainer = document.getElementsByClassName('card');
+// Add event listener
+
+function cardClick() {
+  console.log("i've been clicked...");
+}
+// const clicker = cardContainer.addEventListener('click', cardClick);
+
+// clicker();
+//
+// ? A card complete card...
+const cardIcons = {};
+const dataCardName = 'placeholder data attribute';
+const dataAttribute = `
+  data-card-name="${dataCardName}"
+`;
+
+const singleCard = `
+  <div class="card" ${dataAttribute}>
+    <div class="card face-down">
+      <svg viewBox="0 0 100 100">
+        <use xlink:href="#backOfCard" />
+      </svg>
+    </div>
+    <div class="card hide">
+    <svg viewBox="0 0 100 100">
+      <use xlink:href="#frontOfCards" />
+    </svg>
+  </div>
+  </div>
+`;
+
+// const icons = {
+//   iconName: [],
+//   iconURL: [],
+// };
 
 const board = document.querySelector('.board');
-const svgCard = document.querySelector('circle');
-const gameBoard = {
-  numberCells: [],
-};
 
-const card = {
-  color: 'blue',
-  icon: function cardIcon() {
-    console.log('this chooses an icon from another object call:');
-  },
-};
+const svgCard = document.querySelectorAll('circle');
 
 //
 // game logic
@@ -48,13 +72,22 @@ const card = {
 // generate the grid
 //
 
-function populateBoard() {
-  // populates the HTML grid with cards
-  // gets the number of cells available, then fills them up w/ the card pairs
-  //
+populateBoard(16);
+
+function populateBoard(numberOfCards) {
+  // console.log(boardContainer);
+
+  for (let i = 0; i < numberOfCards; i++) {
+    console.log('things are happening...', dataCardName);
+    board.insertAdjacentHTML('beforeend', singleCard);
+    // modify the data-card attribute
+
+    //
+  }
+  // console.log(card, card.dataset);
 }
 
-function singleCard() {
+function createSingleCard() {
   // create one card
 }
 

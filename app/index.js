@@ -9,34 +9,38 @@
 //
 
 //
+// utls
+//
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function returnNumberPairs(numberOfCards) {
+  const theRando = getRandomInt(numberOfCards);
+  return theRando % (numberOfCards / 2);
+}
+
+//
 // Draw the cards
 //
 
 const cardContainer = document.getElementsByClassName('card');
-// Add event listener
 
-function cardClick() {
-  console.log("i've been clicked...");
-}
-// const clicker = cardContainer.addEventListener('click', cardClick);
+const dataCardName = 'card-name-';
 
-// clicker();
-//
-// ? A card complete card...
-const cardIcons = {};
-const dataCardName = 'placeholder data attribute';
 const dataAttribute = `
   data-card-name="${dataCardName}"
 `;
 
 const singleCard = `
   <div class="card" ${dataAttribute}>
-    <div class="card face-down">
+    <div class="face face-down">
       <svg viewBox="0 0 100 100">
         <use xlink:href="#backOfCard" />
       </svg>
     </div>
-    <div class="card hide">
+    <div class="face hide">
     <svg viewBox="0 0 100 100">
       <use xlink:href="#frontOfCards" />
     </svg>
@@ -44,22 +48,13 @@ const singleCard = `
   </div>
 `;
 
-// const icons = {
-//   iconName: [],
-//   iconURL: [],
-// };
-
-const board = document.querySelector('.board');
-
-const svgCard = document.querySelectorAll('circle');
-
 //
 // game logic
 //
 
 // load a board (grid of cards) face down
 // checks score
-//
+
 // listens for click event on a card
 // user click on a card
 // card flips over displays icon & title
@@ -71,27 +66,55 @@ const svgCard = document.querySelectorAll('circle');
 //
 // generate the grid
 //
+const numberOfCards = 16;
 
-populateBoard(16);
+const board = document.querySelector('.board');
 
-function populateBoard(numberOfCards) {
-  // console.log(boardContainer);
+populateBoard(numberOfCards);
 
-  for (let i = 0; i < numberOfCards; i++) {
-    console.log('things are happening...', dataCardName);
+function populateBoard(amountOfCards) {
+  for (let i = 0; i < amountOfCards; i++) {
+    // console.log('things are happening...', dataCardName);
+    // singleCard can be the output of a function
     board.insertAdjacentHTML('beforeend', singleCard);
-    // modify the data-card attribute
-
-    //
   }
-  // console.log(card, card.dataset);
 }
+
+const cards = document.querySelectorAll('.card');
+// const card = document.querySelector('.card');
+
+function handleCardClick(event) {
+  console.log('the card is being clicked');
+  console.log(event.currentTarget.dataset.cardName);
+  //
+}
+
+// Add event listener
+cards.forEach(function(card) {
+  card.addEventListener('click', handleCardClick);
+  card.dataset.cardName = `${returnNumberPairs(numberOfCards)}`;
+});
+
+// function assignCardFaces() {
+//   // do forEach on this instead of for()...
+//   for (let i = 0; i < numberOfCards; i++) {
+//     // modify the data-card attribute
+//     //
+
+//     cards[i].dataset.cardName = 'cabron' + (i % 8);
+//     // cards[i].addEventListener('click', function() {
+//     // console.log('done clicked');
+//     // });
+//   }
+// }
 
 function createSingleCard() {
+  const num = returnNumberPairs(16);
   // create one card
+  // returns a fully fleshed card, complete w/
 }
 
-function cardPair() {
+function cardPair(numberOfCards) {
   // runs the function create cards w/ singleCard()
   // returns a pair of cards
 }

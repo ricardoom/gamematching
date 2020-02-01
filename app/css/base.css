@@ -53,7 +53,7 @@ main {
   /* border: 1px dotted red; */
 }
 
-.card.face-up {
+.face.face-up {
   color: hsla(32, 98%, 66%);
   fill: currentColor;
   filter: opacity(0.5);
@@ -61,11 +61,11 @@ main {
   top: 0;
 }
 
-.card.hide {
+.face.hide {
   display: none;
 }
 
-.card.face-down {
+.face.face-down {
   color: hsla(202, 98%, 53%, 0.5);
   fill: currentColor;
   position: absolute;

@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "leading-zero": [
+      1,
+      {
+        "include": true
+      }
+    ],
+    "class-name-format": [
+      1,
+      {
+        "allow-leading-underscore": true,
+        "convention": "^[a-z-_A-Z]+$",
+        "convention-explanation": "We do the things our way!"
+      }
+    ]
+  }
+}

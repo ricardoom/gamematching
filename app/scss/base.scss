@@ -1,15 +1,4 @@
-.card {
-  border: 1px dotted lightsalmon;
-  border-radius: var(--spacers);
-  display: flex;
-  height: var(--card-height);
-  width: var(--card-width);
-  perspective: 40rem;
-  cursor: pointer;
-  transition: z-index, transform calc(var(--time) / 4);
-  transition-delay: var(--time), 0s;
-  z-index: 0;
-}
+@use 'card.scss';
 
 :root {
   --backgroundColor: #d4f8c5;
@@ -54,12 +43,15 @@ main {
 
 .card-body {
   display: flex;
+  // flex: 1;
   transition: var(--time) transform;
   transform-style: preserve-3d;
-}
-.card-body.clicked {
-  transform: rotateY(-180deg);
-  transition-delay: 0s;
+
+  &.clicked {
+    transform: rotateY(-180deg);
+    transition-delay: 0s;
+    // z-index: 1;
+  }
 }
 
 .face-up,
@@ -70,7 +62,7 @@ main {
 
 .face-down {
   align-items: center;
-  color: rgba(18, 166, 253, 0.5);
+  color: hsla(202, 98%, 53%, 0.5);
   display: flex;
   fill: currentColor;
   transform: rotateY(-180deg);
@@ -79,7 +71,7 @@ main {
 
 .face-up {
   align-items: center;
-  color: #fdae53;
+  color: hsla(32, 98%, 66%);
   display: flex;
   fill: currentColor;
   transform: translate(-100%);
@@ -90,5 +82,3 @@ main {
   position: absolute;
   width: 0;
 }
-
-/*# sourceMappingURL=base.css.map */

@@ -80,20 +80,20 @@ function populateBoard(amountOfCards) {
   }
 }
 
-const cards = document.querySelectorAll('.card');
+// const cards = document.querySelectorAll('.card');
 // const card = document.querySelector('.card');
 
-function handleCardClick(event) {
-  console.log('the card is being clicked');
-  console.log(event.currentTarget.dataset);
-  //
-}
+// function handleCardClick(event) {
+//   console.log('the card is being clicked');
+//   console.log(event.currentTarget.dataset);
+//   //
+// }
 
-// Add event listener
-cards.forEach(function(card) {
-  card.addEventListener('click', handleCardClick);
-  card.dataset.cardName = `${returnNumberPairs(numberOfCards)}`;
-});
+// // Add event listener
+// cards.forEach(function(card) {
+//   card.addEventListener('click', handleCardClick);
+//   card.dataset.cardName = `${returnNumberPairs(numberOfCards)}`;
+// });
 
 // function assignCardFaces() {
 //   // do forEach on this instead of for()...

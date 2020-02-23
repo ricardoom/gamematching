@@ -1,0 +1,13 @@
+.card {
+  border: 1px dotted lightsalmon;
+  // background-color: var(--cardBg);
+  border-radius: var(--spacers);
+  display: flex;
+  height: var(--card-height);
+  width: var(--card-width);
+  perspective: 40rem;
+  cursor: pointer;
+  transition: z-index, transform calc(var(--time) / 4);
+  transition-delay: var(--time), 0s;
+  z-index: 0;
+}

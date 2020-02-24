@@ -25,28 +25,28 @@ function returnNumberPairs(numberOfCards) {
 // Draw the cards
 //
 
-const cardContainer = document.getElementsByClassName('card');
+// const cardContainer = document.getElementsByClassName('card');
 
-const dataCardName = 'card-name-';
+// const dataCardName = 'card-name-';
 
-const dataAttribute = `
-  data-card-name="${dataCardName}"
-`;
+// const dataAttribute = `
+//   data-card-name="${dataCardName}"
+// `;
 
-const singleCard = `
-  <div class="card" ${dataAttribute}>
-    <div class="face face-down">
-      <svg viewBox="0 0 100 100">
-        <use xlink:href="#backOfCard" />
-      </svg>
-    </div>
-    <div class="face hide">
-    <svg viewBox="0 0 100 100">
-      <use xlink:href="#frontOfCards" />
-    </svg>
-  </div>
-  </div>
-`;
+// const singleCardHTML = `
+//   <div class="card" ${dataAttribute}>
+//     <div class="face face-down">
+//       <svg viewBox="0 0 100 100">
+//         <use xlink:href="#backOfCard" />
+//       </svg>
+//     </div>
+//     <div class="face hide">
+//     <svg viewBox="0 0 100 100">
+//       <use xlink:href="#frontOfCards" />
+//     </svg>
+//   </div>
+//   </div>
+// `;
 
 //
 // game logic
@@ -76,24 +76,24 @@ function populateBoard(amountOfCards) {
   for (let i = 0; i < amountOfCards; i++) {
     // console.log('things are happening...', dataCardName);
     // singleCard can be the output of a function
-    board.insertAdjacentHTML('beforeend', singleCard);
+    board.insertAdjacentHTML('beforeend', singleCardHTML);
   }
 }
 
-const cards = document.querySelectorAll('.card');
+// const cards = document.querySelectorAll('.card');
 // const card = document.querySelector('.card');
 
-function handleCardClick(event) {
-  console.log('the card is being clicked');
-  console.log(event.currentTarget.dataset.cardName);
-  //
-}
+// function handleCardClick(event) {
+//   console.log('the card is being clicked');
+//   console.log(event.currentTarget.dataset);
+//   //
+// }
 
-// Add event listener
-cards.forEach(function(card) {
-  card.addEventListener('click', handleCardClick);
-  card.dataset.cardName = `${returnNumberPairs(numberOfCards)}`;
-});
+// // Add event listener
+// cards.forEach(function(card) {
+//   card.addEventListener('click', handleCardClick);
+//   card.dataset.cardName = `${returnNumberPairs(numberOfCards)}`;
+// });
 
 // function assignCardFaces() {
 //   // do forEach on this instead of for()...

@@ -1,14 +1,76 @@
-/* No sass */
 :root {
-  --backgroundColor: #cefdc2;
-  --borderColor: hsl(96, 94%, 67%);
-  --cardBg: hsla(273, 91%, 79%, 0.75);
+  --backgroundColor: #d4f8c5;
+  --borderColor: hsl(96, 95%, 67%);
+  --cardBg: hsl(0, 0%, 95%);
+  --cardBgDarker: hsl(0, 0%, 80%);
   --card-height: 10rem;
   --card-width: var(--card-height);
   --fontFamily: sans-serif;
   --fontSize: 1rem;
   --spacers: 0.5em;
   --size: 16px;
+  --time: 0.707s;
+}
+
+.purple-gradient {
+  background: #b258ab;
+  background: -webkit-radial-gradient(center, #b258ab, #bf2185);
+  background: -moz-radial-gradient(center, #b258ab, #bf2185);
+  background: radial-gradient(ellipse at center, #b258ab, #bf2185);
+}
+
+.base-gradient {
+  background: #ac6cd5;
+  background: -webkit-linear-gradient(top left, #ac6cd5, #71172a);
+  background: -moz-linear-gradient(top left, #ac6cd5, #71172a);
+  background: linear-gradient(to bottom right, #ac6cd5, #71172a);
+}
+
+.card {
+  cursor: pointer;
+  display: flex;
+  height: var(--card-height);
+  perspective: 40rem;
+  transition: z-index, transform calc(var(--time) / 4);
+  transition-delay: var(--time), 0s;
+  width: var(--card-width);
+  z-index: 0;
+}
+
+.card-body {
+  display: flex;
+  transition: var(--time) transform;
+  transform-style: preserve-3d;
+}
+.card-body.clicked {
+  transform: rotateY(-180deg);
+  transition-delay: 0s;
+}
+
+.face-up,
+.face-down {
+  backface-visibility: hidden;
+  min-width: 100%;
+}
+
+.face-down {
+  align-items: center;
+  color: rgba(18, 166, 253, 0.5);
+  display: flex;
+  fill: currentColor;
+  transform: rotateY(-180deg);
+  transform-origin: center;
+}
+
+.face-up {
+  align-items: center;
+  color: #fdae53;
+  display: flex;
+  fill: currentColor;
+  transform: translate(-100%);
+}
+
+:root {
   padding: 0;
   margin: 0;
 }
@@ -16,12 +78,17 @@
 html {
   font-size: var(--size);
   box-sizing: border-box;
+  border-left: 2px solid #000;
 }
 
 body {
   background: var(--backgroundColor);
   font-family: var(--fontFamily);
   font-size: var(--fontSize);
+}
+
+.main-title {
+  color: var(--borderColor);
 }
 
 main {
@@ -33,43 +100,9 @@ main {
 .board {
   display: grid;
   gap: calc(var(--spacers) * 2);
-  grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
-  /* grid-template-rows: repeat(8, var(--card-height)); */
-  /* grid-auto-flow: row; */
-  /* height: 10em; */
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
   place-items: center center;
   width: 50em;
-}
-
-.board > .card {
-  background-color: var(--cardBg);
-  border-radius: var(--spacers);
-  height: var(--card-height);
-  width: var(--card-width);
-  position: relative;
-}
-
-.card > svg {
-  /* border: 1px dotted red; */
-}
-
-.face.face-up {
-  color: hsla(32, 98%, 66%);
-  fill: currentColor;
-  filter: opacity(0.5);
-  position: absolute;
-  top: 0;
-}
-
-.face.hide {
-  display: none;
-}
-
-.face.face-down {
-  color: hsla(202, 98%, 53%, 0.5);
-  fill: currentColor;
-  position: absolute;
-  top: 0;
 }
 
 .svg-definition {
@@ -77,3 +110,5 @@ main {
   position: absolute;
   width: 0;
 }
+
+/*# sourceMappingURL=base.css.map */

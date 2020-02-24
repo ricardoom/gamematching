@@ -1,0 +1,27 @@
+:root {
+  --backgroundColor: #d4f8c5;
+  --borderColor: hsl(96, 95%, 67%);
+  --cardBg: hsl(0, 0%, 95%);
+  --cardBgDarker: hsl(0, 0%, 80%);
+  --card-height: 10rem;
+  --card-width: var(--card-height);
+  --fontFamily: sans-serif;
+  --fontSize: 1rem;
+  --spacers: 0.5em;
+  --size: 16px;
+  --time: 0.707s;
+}
+
+.purple-gradient {
+  background: rgba(178, 88, 171, 1);
+  background: -webkit-radial-gradient(center, rgba(178, 88, 171, 1), rgba(191, 33, 133, 1));
+  background: -moz-radial-gradient(center, rgba(178, 88, 171, 1), rgba(191, 33, 133, 1));
+  background: radial-gradient(ellipse at center, rgba(178, 88, 171, 1), rgba(191, 33, 133, 1));
+}
+
+.base-gradient {
+  background: rgba(172, 108, 213, 1);
+  background: -webkit-linear-gradient(top left, rgba(172, 108, 213, 1), rgba(113, 23, 42, 1));
+  background: -moz-linear-gradient(top left, rgba(172, 108, 213, 1), rgba(113, 23, 42, 1));
+  background: linear-gradient(to bottom right, rgba(172, 108, 213, 1), rgba(113, 23, 42, 1));
+}

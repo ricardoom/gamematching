@@ -1,0 +1,45 @@
+.card {
+  cursor: pointer;
+  display: flex;
+  height: var(--card-height);
+  perspective: 40rem;
+  transition: z-index, transform calc(var(--time) / 4);
+  transition-delay: var(--time), 0s;
+  width: var(--card-width);
+  z-index: 0;
+}
+
+.card-body {
+  display: flex;
+  transition: var(--time) transform;
+  transform-style: preserve-3d;
+
+  &.clicked {
+    transform: rotateY(-180deg);
+    transition-delay: 0s;
+    // z-index: 1;
+  }
+}
+
+.face-up,
+.face-down {
+  backface-visibility: hidden;
+  min-width: 100%;
+}
+
+.face-down {
+  align-items: center;
+  color: hsla(202, 98%, 53%, 0.5);
+  display: flex;
+  fill: currentColor;
+  transform: rotateY(-180deg);
+  transform-origin: center;
+}
+
+.face-up {
+  align-items: center;
+  color: hsla(32, 98%, 66%);
+  display: flex;
+  fill: currentColor;
+  transform: translate(-100%);
+}

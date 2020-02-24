@@ -1,0 +1,43 @@
+@use 'color.scss';
+@use 'card.scss';
+
+:root {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: var(--size);
+  box-sizing: border-box;
+  border-left: 2px solid #000;
+}
+
+body {
+  background: var(--backgroundColor);
+  font-family: var(--fontFamily);
+  font-size: var(--fontSize);
+}
+
+.main-title {
+  color: var(--borderColor);
+}
+
+main {
+  border: 1px solid var(--borderColor);
+  border-radius: 1em;
+  padding: calc(var(--spacers) * 4);
+}
+
+.board {
+  display: grid;
+  gap: calc(var(--spacers) * 2);
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+  place-items: center center;
+  width: 50em;
+}
+
+.svg-definition {
+  height: 0;
+  position: absolute;
+  width: 0;
+}

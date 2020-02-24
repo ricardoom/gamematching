@@ -1,16 +1,7 @@
+@use 'color.scss';
 @use 'card.scss';
 
 :root {
-  --backgroundColor: #d4f8c5;
-  --borderColor: hsl(96, 95%, 67%);
-  --cardBg: hsl(273, 91%, 91%);
-  --card-height: 10rem;
-  --card-width: var(--card-height);
-  --fontFamily: sans-serif;
-  --fontSize: 1rem;
-  --spacers: 0.5em;
-  --size: 16px;
-  --time: 0.707s;
   padding: 0;
   margin: 0;
 }
@@ -27,6 +18,10 @@ body {
   font-size: var(--fontSize);
 }
 
+.main-title {
+  color: var(--borderColor);
+}
+
 main {
   border: 1px solid var(--borderColor);
   border-radius: 1em;
@@ -39,42 +34,6 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
   place-items: center center;
   width: 50em;
-}
-
-.card-body {
-  display: flex;
-  // flex: 1;
-  transition: var(--time) transform;
-  transform-style: preserve-3d;
-
-  &.clicked {
-    transform: rotateY(-180deg);
-    transition-delay: 0s;
-    // z-index: 1;
-  }
-}
-
-.face-up,
-.face-down {
-  backface-visibility: hidden;
-  min-width: 100%;
-}
-
-.face-down {
-  align-items: center;
-  color: hsla(202, 98%, 53%, 0.5);
-  display: flex;
-  fill: currentColor;
-  transform: rotateY(-180deg);
-  transform-origin: center;
-}
-
-.face-up {
-  align-items: center;
-  color: hsla(32, 98%, 66%);
-  display: flex;
-  fill: currentColor;
-  transform: translate(-100%);
 }
 
 .svg-definition {

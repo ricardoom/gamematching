@@ -1,20 +1,8 @@
-.card {
-  border: 1px dotted lightsalmon;
-  border-radius: var(--spacers);
-  display: flex;
-  height: var(--card-height);
-  width: var(--card-width);
-  perspective: 40rem;
-  cursor: pointer;
-  transition: z-index, transform calc(var(--time) / 4);
-  transition-delay: var(--time), 0s;
-  z-index: 0;
-}
-
 :root {
   --backgroundColor: #d4f8c5;
   --borderColor: hsl(96, 95%, 67%);
-  --cardBg: hsl(273, 91%, 91%);
+  --cardBg: hsl(0, 0%, 95%);
+  --cardBgDarker: hsl(0, 0%, 80%);
   --card-height: 10rem;
   --card-width: var(--card-height);
   --fontFamily: sans-serif;
@@ -22,34 +10,31 @@
   --spacers: 0.5em;
   --size: 16px;
   --time: 0.707s;
-  padding: 0;
-  margin: 0;
 }
 
-html {
-  font-size: var(--size);
-  box-sizing: border-box;
-  border-left: 2px solid #000;
+.purple-gradient {
+  background: #b258ab;
+  background: -webkit-radial-gradient(center, #b258ab, #bf2185);
+  background: -moz-radial-gradient(center, #b258ab, #bf2185);
+  background: radial-gradient(ellipse at center, #b258ab, #bf2185);
 }
 
-body {
-  background: var(--backgroundColor);
-  font-family: var(--fontFamily);
-  font-size: var(--fontSize);
+.base-gradient {
+  background: #ac6cd5;
+  background: -webkit-linear-gradient(top left, #ac6cd5, #71172a);
+  background: -moz-linear-gradient(top left, #ac6cd5, #71172a);
+  background: linear-gradient(to bottom right, #ac6cd5, #71172a);
 }
 
-main {
-  border: 1px solid var(--borderColor);
-  border-radius: 1em;
-  padding: calc(var(--spacers) * 4);
-}
-
-.board {
-  display: grid;
-  gap: calc(var(--spacers) * 2);
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
-  place-items: center center;
-  width: 50em;
+.card {
+  cursor: pointer;
+  display: flex;
+  height: var(--card-height);
+  perspective: 40rem;
+  transition: z-index, transform calc(var(--time) / 4);
+  transition-delay: var(--time), 0s;
+  width: var(--card-width);
+  z-index: 0;
 }
 
 .card-body {
@@ -83,6 +68,41 @@ main {
   display: flex;
   fill: currentColor;
   transform: translate(-100%);
+}
+
+:root {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: var(--size);
+  box-sizing: border-box;
+  border-left: 2px solid #000;
+}
+
+body {
+  background: var(--backgroundColor);
+  font-family: var(--fontFamily);
+  font-size: var(--fontSize);
+}
+
+.main-title {
+  color: var(--borderColor);
+}
+
+main {
+  border: 1px solid var(--borderColor);
+  border-radius: 1em;
+  padding: calc(var(--spacers) * 4);
+}
+
+.board {
+  display: grid;
+  gap: calc(var(--spacers) * 2);
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+  place-items: center center;
+  width: 50em;
 }
 
 .svg-definition {

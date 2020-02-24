@@ -59,7 +59,6 @@ const dataAttribute = 'data-card-name';
 const singleCardHTML = `<div id="" class="card"></div>`;
 
 const singleCardInner = `
-
   <div class="face-down">
     <svg viewBox="0 0 100 100">
       <use xlink:href="#backOfCard" />
@@ -108,6 +107,7 @@ const cardMap = theShuffledArray.map(newCard => {
 
 //
 // check for matches
+// TODO: move to module
 function checkForMatch(input) {
   if (input !== this.face) {
     console.log(`${input} does not match ${this.face}`);
@@ -116,10 +116,9 @@ function checkForMatch(input) {
   }
 }
 
-// populate boards logic
 //
-// const numberOfCards = theCardArray.length;
-
+// populate boards logic
+// TODO: move to module
 const board = document.querySelector('.board');
 
 function populateBoard(amountOfCards) {
@@ -137,29 +136,61 @@ populateBoard(theCardArray.length);
 
 //
 // matching logic...
-//
+// TODO: move to module
 
-// events and clicks etc...
+//
+// game play
+// TODO: move to module
 
 const cards = document.querySelectorAll('.card');
 
-const cardBody = document.querySelectorAll('.card-body');
+const cardBody = document.querySelector('.card-body');
+
+// a function to keep user from clicking any more cards:
+function stopTheClicks(cb) {
+  console.log('you cannot click anymore');
+  // keep the user from clicking again:
+  cards.forEach(card => card.removeEventListener('click', handleCardClick));
+  setTimeout(cb, 5000);
+}
+
+// a function to cause clicked cards to flip back over:
+// put this behind a setTimeout() on the click handler?
+// so, check to see if two cards have been clicked, then kick off this function
+function flipTheCardsBackOver() {
+  for (const parent of cards) {
+    if (parent.firstElementChild.classList.contains('clicked') == true) {
+      parent.firstElementChild.classList.toggle('clicked');
+    } else {
+      console.log('some shit');
+      listenForClicks();
+      inc = 0;
+    }
+  }
+}
 
 // count the number of clicks on the game board
 let inc = 0;
 function clickCount() {
   inc++;
-  console.log(`the number of clicks: ${inc}`);
+  if (inc < 2) {
+  } else {
+    stopTheClicks(flipTheCardsBackOver);
+  }
 }
 
-function handleCardClick(event) {
-  const dataEvent = event.currentTarget.dataset;
-  const clickEvent = event;
+function handleCardClick() {
   this.firstElementChild.classList.toggle('clicked');
   clickCount();
 }
 
 // Add event listener
-cards.forEach(function(card) {
-  card.addEventListener('click', handleCardClick);
-});
+function listenForClicks() {
+  cards.forEach(function(card) {
+    card.addEventListener('click', handleCardClick);
+  });
+}
+
+(() => {
+  listenForClicks();
+})();

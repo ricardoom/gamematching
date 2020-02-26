@@ -1,4 +1,9 @@
+//
+// A Matching Game
+//
+
 // random util
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
@@ -6,6 +11,7 @@ function getRandomInt(max) {
 //
 // basic array of card names
 //
+
 const theCardArray = [
   'light-bulb',
   'quaker',
@@ -27,8 +33,8 @@ const theCardArray = [
 
 // this shuffle array function came from stack overflow.
 // this version does not mutate the original array
+
 const shuffleArray = function(array) {
-  // const a = array.slice();
   const a = [...array];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -37,12 +43,8 @@ const shuffleArray = function(array) {
   return a;
 };
 
-//
-// card elements
-//
-
 // run the shuffle / array stuff...
-//
+
 const theShuffledArray = shuffleArray(theCardArray);
 
 const theCardArrayLength = theCardArray.length;
@@ -50,6 +52,7 @@ const theCardArrayLength = theCardArray.length;
 //
 // stub out the cards
 //
+
 const cardContainer = document.getElementsByClassName('card');
 
 const dataCardName = '';
@@ -59,19 +62,6 @@ const dataAttribute = 'data-card-name';
 const singleCardHTML = `<div id="" class="card"></div>`;
 
 const singleCardInner = `
-  <div class="face-down">
-    <svg viewBox="0 0 100 100">
-      <use xlink:href="#backOfCard" />
-    </svg>
-  </div>
-  <div class="face-up">
-    <svg viewBox="0 0 100 100">
-      <use xlink:href="#frontOfCards" />
-    </svg>
-  </div>
-`;
-
-const singleCardInnerTwo = `
   <div class="card-body">
     <div class="face-down">
       <svg viewBox="0 0 100 100">
@@ -90,9 +80,11 @@ const singleCardInnerTwo = `
 
 //
 // create the cards
+// TODO: move to module
 //
+
 const cardMap = theShuffledArray.map(newCard => {
-  const singleCardInnerHTMLFragment = document.createRange().createContextualFragment(singleCardInnerTwo);
+  const singleCardInnerHTMLFragment = document.createRange().createContextualFragment(singleCardInner);
 
   const freshCard = {
     face: newCard,
@@ -106,41 +98,32 @@ const cardMap = theShuffledArray.map(newCard => {
 });
 
 //
-// check for matches
-// TODO: move to module
-function checkForMatch(input) {
-  if (input !== this.face) {
-    console.log(`${input} does not match ${this.face}`);
-  } else {
-    console.log(`its a match: ${input} == ${this.face}`);
-  }
-}
-
-//
 // populate boards logic
 // TODO: move to module
+// TODO: Artwork for each card
+// TODO: create pairs to be matched
+//
+
 const board = document.querySelector('.board');
 
 function populateBoard(amountOfCards) {
   const generatedCard = document.getElementsByClassName('card');
 
   for (let i = 0; i < amountOfCards; i++) {
-    board.insertAdjacentHTML('beforeend', cardMap[i].html);
-    generatedCard[i].appendChild(cardMap[i].innerHTML);
-    generatedCard[i].setAttribute(`${dataAttribute}`, cardMap[i].id);
-    generatedCard[i].setAttribute(`id`, cardMap[i].id);
+    const { html, innerHTML, id } = cardMap[i];
+    board.insertAdjacentHTML('beforeend', html);
+    generatedCard[i].appendChild(innerHTML);
+    generatedCard[i].setAttribute(`${dataAttribute}`, id);
+    generatedCard[i].setAttribute(`id`, id);
   }
 }
 
 populateBoard(theCardArray.length);
 
 //
-// matching logic...
-// TODO: move to module
-
-//
 // game play
 // TODO: move to module
+//
 
 const cards = document.querySelectorAll('.card');
 
@@ -159,21 +142,21 @@ function stopTheClicks(cb) {
 // so, check to see if two cards have been clicked, then kick off this function
 function flipTheCardsBackOver() {
   for (const parent of cards) {
-    if (parent.firstElementChild.classList.contains('clicked') == true) {
+    if (parent.firstElementChild.classList.contains('clicked')) {
       parent.firstElementChild.classList.toggle('clicked');
     } else {
-      console.log('some shit');
       listenForClicks();
-      inc = 0;
+      // reset incrementCount
+      incrementCount = 0;
     }
   }
 }
 
 // count the number of clicks on the game board
-let inc = 0;
+let incrementCount = 0;
 function clickCount() {
-  inc++;
-  if (inc < 2) {
+  incrementCount++;
+  if (incrementCount < 2) {
   } else {
     stopTheClicks(flipTheCardsBackOver);
   }
@@ -191,6 +174,20 @@ function listenForClicks() {
   });
 }
 
+// check for matches
+// TODO: probalby not what is below this...
+// TODO: Scoring, When match is made leaving the cards facing up, End of Game,
+function checkForMatch(input) {
+  if (input !== this.face) {
+    console.log(`${input} does not match ${this.face}`);
+  } else {
+    console.log(`its a match: ${input} == ${this.face}`);
+  }
+}
+
+//
+
+// make sure the click handler is run immediately:
 (() => {
   listenForClicks();
 })();

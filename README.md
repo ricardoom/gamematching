@@ -1,8 +1,16 @@
 # Matching Game
 
+## v0.0.1
+
 ## A Javascript learning project.
 
 Another project designed to help me learn Javascript. This one has been fun fun.
+
+### Run the project
+
+Install SASS, if it is not already present
+`npm install` to grab BrowserSync
+`npm run dev`
 
 ### Issues encountered and things learned...
 
@@ -19,22 +27,27 @@ Matching game is not as easy as I thought it would be, to my mind there are a fe
   - Logic for counting the number of clicks ie: cards turned over (2)
   - Then preventing the user to click anymore cards
   - Setting a timer to turn the card _back_ over and allowing cards to be clicked again
-  -
   - Some css was wanted to change the cursor so it was obvious the cards could be clicked on.
   - Flipping the cards over
 - Sundry other issues:
+  - Turns out the `svg` `<use>` element and the `x:link` attribute have been deprecated for a minute. So use of a simple `href` attribute is wanted... still not working in Chrome tho 🤔...
+    - Chrome wants `height` and `width` attributes, which is fine but that caused all styling to go haywire and trouble w/ the `viewBox`
   - `npm`, BrowserSync and sundry related issues were a thing for minute, but they got sorted, not fun, but seemingly necessary. I've been eschewing using `npm` modules, the primary reason being, I want to really understand what my code is doing, so importing magic seems like wrong move at this point in my learning path.
 
-### TODOs for Future Versions and Nice to Haves
+### TODOs
 
-- Do some fun shuffling of the board w/ GSAP
+- Create the card artwork
+- Logic for creating card pairs
+- Logic for matching card pairs
+- Better responsive layout
+
+### Nice to Haves
+
+- Do some fun animated shuffling of the board w/ GSAP
 - Create a UI for changing game options
   - Number of cards on the board to increase difficulty
   - Timed games
-  -
-- Put up on glitch
-
-## v0.0.1
+- Put up on glitch or serve up via own server
 
 ### Change Log
 

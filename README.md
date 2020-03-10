@@ -30,7 +30,7 @@ Matching game is not as easy as I thought it would be, to my mind there are a fe
   - Some css was wanted to change the cursor so it was obvious the cards could be clicked on.
   - Flipping the cards over
 - Sundry other issues:
-  - Turns out the `svg` `<use>` element and the `x:link` attribute have been deprecated for a minute. So use of a simple `href` attribute is wanted... still not working in Chrome tho 🤔...
+  - Turns out the `svg` `x:link` attribute on a `<use>` element is deprecated. So use of a simple `href` attribute is wanted... still not working in Chrome tho 🤔...
     - Chrome wants `height` and `width` attributes, which is fine but that caused all styling to go haywire and trouble w/ the `viewBox`
   - `npm`, BrowserSync and sundry related issues were a thing for minute, but they got sorted, not fun, but seemingly necessary. I've been eschewing using `npm` modules, the primary reason being, I want to really understand what my code is doing, so importing magic seems like wrong move at this point in my learning path.
 

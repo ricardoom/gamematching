@@ -34,7 +34,8 @@ const theCardArray = [
 // this shuffle array function came from stack overflow.
 // this version does not mutate the original array
 
-const shuffleArray = function(array) {
+const shuffleArray = function(array = []) {
+  if (!Array.isArray(array)) return;
   const a = [...array];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -98,7 +99,7 @@ const cardMap = theShuffledArray.map(newCard => {
     id: `${newCard}-${getRandomInt(theCardArrayLength)}`,
     html: singleCardHTML,
     innerHTML: singleCardInnerHTMLFragment,
-    checkMatch: function(input) {
+    checkMatch(input) {
       if (input !== this.id) {
         console.log(`${input} does not match ${this.id}`);
       } else {
@@ -146,18 +147,13 @@ const cards = document.querySelectorAll('.card');
 const cardBody = document.querySelector('.card-body');
 
 // a function to keep user from clicking any more cards:
-function stopTheClicks(cb = null) {
+// this function only prevents the other cards from being clicked
+function stopTheClicks(cb) {
   console.log('you cannot click anymore');
   // keep the user from clicking again:
   cards.forEach(card => card.removeEventListener('click', handleCardClick));
-  setTimeout(cb, 5000);
+  setTimeout(cb, 2500);
 }
-
-// Logic to prevent clicking on a card that is _already_ turned over, most likely the first card..
-
-// function preventSameCardClick() {
-//   console.log('you alreday selected this card');
-// }
 
 // a function to cause clicked cards to flip back over:
 // put this behind a setTimeout() on the click handler?
@@ -176,22 +172,47 @@ function flipTheCardsBackOver() {
 
 // Count the number of clicks on the game board
 let incrementCount = 0;
-function clickCount(firstClick) {
+let totalClicks = 0;
+function clickCount(theCurrentCard) {
   incrementCount++;
-  if (incrementCount === 1 && firstClick === firstClick) {
-    console.log(firstClick, incrementCount);
-    this.removeEventListener('click', handleCardClick);
-  } else if (incrementCount < 2) {
-    stopTheClicks(flipTheCardsBackOver);
-  } else {
-    return;
+  totalClicks++;
+  // console.log(theCurrentCard.id);
+  // const { id } = theCurrentCard;
+  // console.log(`the current card is: ${id}`);
+  // if (incrementCount < 2 && totalClicks >= 1) {
+  //   // let firstClickedCard = id;
+  //   // const [first, second] = theCurrentCard;
+  //   console.log(`number of clicks: ${totalClicks}`);
+  //   return (firstClick = theCurrentCard);
+  // } else {
+  //   console.log(`number of clicks: ${totalClicks}`);
+  //   stopTheClicks(flipTheCardsBackOver);
+  // }
+  // try a switch block instead of if else
+  const { id, dataset } = theCurrentCard;
+  switch (incrementCount) {
+    case (incrementCount = 1):
+      {
+        console.log(incrementCount, id, dataset.cardName, this);
+        // function that checks for matches?
+      }
+      break;
+    case (incrementCount = 2):
+      console.log(incrementCount, id, dataset.cardName);
+      stopTheClicks(flipTheCardsBackOver);
+      break;
+    default:
+      // stopTheClicks(flipTheCardsBackOver);
+      // console.log('nadaaaaaaaa!');
+      break;
   }
 }
 
 function handleCardClick() {
+  // const { id, dataset } = this;
+  // console.log(this, dataset.cardName);
   this.firstElementChild.classList.toggle('clicked');
-  // console.log(this.dataset.cardName);
-  clickCount(this.dataset.cardName);
+  clickCount(this);
 }
 
 // Add event listener
@@ -200,6 +221,11 @@ function listenForClicks() {
     card.addEventListener('click', handleCardClick);
   });
 }
+
+// Logic to prevent clicking on a card that is _already_ turned over, most likely the first card..
+// if your click count is the second click AND the name of the card is the same as the first then prevent the card from being interacted with again;
+
+// otherwise do wait for the next card to be clicked on...
 
 // check for matches
 // TODO: probalby not what is below this...

@@ -36,6 +36,7 @@ Matching game is not as easy as I thought it would be, to my mind there are a fe
 
 ### TODOs
 
+- Make more accessible: `aria` attribution etc...
 - Create the card artwork
 - Logic for creating card pairs
 - Logic for matching card pairs

@@ -35,7 +35,7 @@ const theCardArray = [
 // this version does not mutate the original array
 
 const shuffleArray = function(array = []) {
-  if (!Array.isArray(array)) return;
+  if (!Array.isArray(array) && array.length > 0) return;
   const a = [...array];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
